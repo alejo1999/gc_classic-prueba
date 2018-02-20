@@ -16,7 +16,7 @@
     <div class='container-login center z-depth-5'>
         <div style="margin:15px 0;">
             <i class="material-icons">account_circle</i>
-            <p>Inicia sesión con tu cuenta cambio2</p>   
+            <p>Inicia sesión con tu cuenta </p>   
         </div>
         <form action="">
           <div class="input-field col s12 l12">
