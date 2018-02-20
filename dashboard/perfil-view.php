@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
 
-                <h3>Perfil</h3>
+                <h3>vista de Perfil</h3>
 
                     
                     <div class='col s12 m8 l9'>
