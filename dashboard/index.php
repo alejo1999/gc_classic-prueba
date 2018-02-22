@@ -22,14 +22,41 @@
     </header>
 
     <main>
+            
         <div class='container'>
-            <div>
+            <div class="row">
+                <div class='col s12 m12 l12 '>
 
-
-                <!-- boton de agregar nuevos productos-->
-                <a class="btn-floating btn-large modal-trigger waves-effect waves-light light-blue lighten-1 right " href="#modal1">
-                    <i class="material-icons">add</i>
-                </a>
+                        <div class="col s12 m4 l4 ">
+                            <h4>Productos</h4>
+                        </div>
+                        
+                        <div class="col s12 m6 l6 ">
+                            
+                                <form>
+                                    <div class="input-field">
+                                        <i class="material-icons prefix">search</i>
+                                        <input id="icon_prefix" type="text" class="validate">
+                                        <label for="icon_prefix">buscar</label>
+                                    </div>
+                                </form>
+                            
+                        </div>
+                        <div class='col s12 m2 l2   '>
+                        
+                            <!-- boton de agregar nuevos productos-->
+                                    
+                                    <a class=" espaciado btn-floating btn-large modal-trigger waves-effect waves-light light-blue lighten-1 right " href="#modal1">
+                                    <i class="large material-icons">add</i>
+                                    </a>
+                                    
+                                
+                        </div>
+                
+                </div>
+            </div>   
+                
+            
 
                 <!-- ventana modal para agregar nuevos productos-->
                 <div id="modal1" class="modal modal-fixed-footer">
@@ -255,16 +282,9 @@
                         </a>
                     </div>
                 </div>
-
-
-            </div>
-            <!-- fin de ventana modal para Modificar productos-->
+                <!-- fin de ventana modal para Modificar productos-->
 
             <!--  ventana modal para Eliminar productos-->
-
-
-
-            <!-- Modal Structure -->
             <div id="modal3" class="modal ">
                 <div class="modal-content">
                     <h4>Desea Eliminar este producto</h4>
@@ -289,8 +309,6 @@
                 </div>
             </div>
             <!-- fin de ventana modal para Eliminar productos-->
-
-            <h3>Productos</h3>
 
             <!-- TABLA DE LOS PRODUCTOS-->
             <table class="centered bordered highlight responsive-table">

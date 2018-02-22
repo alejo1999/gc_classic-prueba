@@ -33,20 +33,20 @@
                 <div>
                     <a href='index.php'class='btn-floating btn-large  waves-effect waves-light light-blue lighten-1'><i class="material-icons">send</i></a>
                 </div>
-                <!--boton modal-->
-                <a class='modal-trigger' href='#modal12'>Recuperar contraseña</a>
+                <!--boton de la ventana modal-->
+                <a class='modal-trigger' href='#modal1'>Recuperar contraseña</a>
                 </form>
             </div>
         </div>
 
         
         
-        <!-- Modal Structure -->
-        <div id="modal12" class="modal ">
+        <!-- Ventana modal -->
+        <div id="modal1" class="modal ">
           <div class="modal-content center  container">
             <h4>Recuperar Contraseña</h4>
             <div>
-            <spam>Ingresa el correo que tienes registrado en tu cuenta posteriormente se te enviara un codigo ,  </spam>
+            <spam>Ingresa el correo que tienes registrado en tu cuenta posteriormente se te enviara un codigo ,</spam>
             <p> ingresa ese codigo como contraseña luego puedes modificarla </p>
             </div>
             <div class="container">
