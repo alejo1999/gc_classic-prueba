@@ -32,7 +32,16 @@
                         title: "Excelente!",
                         text: "Se Modifico satisfactoriamente!",
                         icon: "success",
-                        button: "OK!",
+                        button: "aceptar",
+                    });
+            }
+            function listo_contraseña(){
+
+                swal({
+                        title: "Excelente!",
+                        text: "Se ha enviado un codigo a tu correo",
+                        icon: "success",
+                        button: "aceptar",
                     });
             }
             function listo_Agregar(){
@@ -41,7 +50,7 @@
                         title: "Excelente!",
                         text: "Se Agrego satisfactoriamente!",
                         icon: "success",
-                        button: "OK!",
+                        button: "aceptar",
                     });
                 }
         </script>

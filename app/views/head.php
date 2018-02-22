@@ -5,4 +5,6 @@
         <link rel='stylesheet' href='../web/css/materialize.min.css'>
         <link rel='stylesheet' href='../web/css/material_icons.css'>
         <link rel='stylesheet' href='../web/css/style2.css'>
+        <link rel='stylesheet' href='../web/css/sweetalert.css'>
+        <script type='text/javascript' src='../web/js/sweetalert.js'></script>
         
