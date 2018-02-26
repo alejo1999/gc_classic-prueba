@@ -73,6 +73,7 @@
         
     </footer>
         <?php
+        #llamado de el archivo maestro footer
             include('../app/views/scripts.php')
         ?>   
 </body>

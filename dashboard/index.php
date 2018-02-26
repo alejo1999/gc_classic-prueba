@@ -398,7 +398,7 @@
     </footer>
 
 
-
+        
 
     <?php
             include('../app/views/scripts.php')
