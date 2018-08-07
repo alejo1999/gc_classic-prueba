@@ -1,17 +1,14 @@
 <?php
 require_once("../../app/models/admin.class.php");
+
 try{
 	$admin = new Administrador;
 	if(isset($_POST['buscar'])){
 		$_POST = $admin->validateForm($_POST);
-		$data = $admin->searchUsuario($_POST['busqueda']);
-		if($data){
-			$rows = count($data);
-			Page::showMessage(4, "Se encontraron $rows resultados", null);
-		}else{
-			Page::showMessage(4, "No se encontraron resultados", null);
+		if($admin->backupDatabaseTables('localhost','root','','gcclassic-prueba')){
 			$data = $admin->getUsuarios();
 		}
+		
 	}else{
 		$data = $admin->getUsuarios();
 	}

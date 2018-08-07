@@ -63,7 +63,7 @@ class Venta extends Validator{
         FROM detalle_factura
         INNER JOIN venta ON detalle_factura.fk_id_venta = venta.id_venta
         INNER JOIN productos ON detalle_factura.fk_id_producto = productos.id_producto
-        INNER JOIN cliente ON venta.fk_id_usuario = cliente.id_cliente
+        INNER JOIN cliente ON venta.fk_id_cliente = cliente.id_cliente
         ORDER BY venta.id_venta ASC";
 		$params = array(null);
 		return Database::getRows($sql, $params);
@@ -78,6 +78,30 @@ class Venta extends Validator{
 		WHERE cliente.nombre_cliente LIKE ? OR venta.id_venta LIKE ?  ORDER BY venta.id_venta ASC";
 		$params = array("%$value%", "%$value%");
 		return Database::getRows($sql, $params);
-    }
+	}
+	
+	public function checkCliente(){
+		$sql = "SELECT * FROM venta WHERE fk_id_cliente = ?";
+		$params = array($this->id_usuario);
+		return Database::getRows($sql, $params);
+
+
+	}
+
+	public function ventasPublic(){
+		$sql = "SELECT  venta.fecha,productos.imagen,productos.nombre , productos.precio , detalle_factura.cantidad,detalle_factura.subtotal 
+		FROM detalle_factura
+		INNER JOIN venta ON detalle_factura.fk_id_venta = venta.id_venta
+		INNER JOIN productos ON detalle_factura.fk_id_producto = productos.id_producto
+		INNER JOIN cliente ON venta.fk_id_cliente = cliente.id_cliente
+		WHERE venta.fk_id_cliente = ? AND detalle_factura.estadoventa = 1 
+		ORDER BY venta.id_venta ASC";
+		$params = array($this->id_usuario);
+		return Database::getRows($sql, $params);
+
+
+	}
+
+	
 }
 ?>

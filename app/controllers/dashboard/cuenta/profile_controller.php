@@ -4,7 +4,6 @@ try{
     $usuario = new Administrador;
     if($usuario->setId($_SESSION['id_admin'])){
         if($usuario->readUsuario()){
-            
             if(isset($_POST['editar'])){
                 $_POST = $usuario->validateForm($_POST);
                 if($usuario->setNombres($_POST['nombres'])){
@@ -13,13 +12,12 @@ try{
                             if($usuario->setTelefono($_POST['telefono'])){
                                 if($usuario->updateUsuario()){
                                     $_SESSION['correo'] = $usuario->getCorreo();
-                                    
                                     Page::showMessage(1, "Perfil modificado", "index.php");
                                 }else{
                                     throw new Exception(Database::getException());
                                 }
                             }else{
-                                throw new Exception("Alias incorrecto");
+                                throw new Exception("telefono incorrecto");
                             }
                         }else{
                             throw new Exception("Correo incorrecto");

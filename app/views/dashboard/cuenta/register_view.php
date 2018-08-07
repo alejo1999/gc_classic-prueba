@@ -35,3 +35,4 @@
  	    <button type='submit' name='registrar' class='btn waves-effect blue'><i class='material-icons'>send</i></button>
     </div>
 </form>
+

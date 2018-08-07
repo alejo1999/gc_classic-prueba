@@ -18,6 +18,7 @@ class Page extends Component{
                 <link type='text/css' rel='stylesheet' href='../../web/css/style2.css'>
                 <link type='text/css' rel='stylesheet' href='../../web/css/jquery.dataTables.min.css'>
                 <script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
+                <script type='text/javascript' src='../../web/js/Chart.bundle.js'></script>
                 <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
                 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
                 <meta http-equiv='X-UA-Compatible' content='ie=edge'>
@@ -29,7 +30,7 @@ class Page extends Component{
             <header>
             
             <nav class='cyan lighten-1 '>
-            <div class='nav-wrapper navbar-fixed cyan lighten-1'>
+            <div class='nav-wrapper navbar-fixed light-blue accent-4'>
                 <a href='#!'  class='brand-logo center'><img class='tamanio' src='../../web/img/logo/logo_medium_black.png' ></a>    
               <!--  <a class='waves-effect waves-light right ' href='#' ><i class='material-icons right'>power_settings_new</i>Cerrar sesion</a>-->
                
@@ -42,6 +43,7 @@ class Page extends Component{
                     <li><a href='../cuenta/logout.php'><i class='material-icons '>vpn_key</i>Cerrar Sesion</a></li>
                     <li class='divider'></li>
                     <li><a href='../cuenta/profile.php'><i class='material-icons'>settings</i>modificar perfil</a></li>
+                    <li><a href='../../public/index.php'><i class='material-icons'>settings</i>sitio publico</a></li>
                    
                 </ul>
             </div>
@@ -69,7 +71,7 @@ class Page extends Component{
                 <li><a href='#!' class='waves-effect waves-light btn-large cyan lighten-1'><i class='material-icons'>assessment</i>Estadisticas</a></li>
             </ul>       
             </header>
-				<main class='container'>
+				<main id='mainsito' class='container'>
 					<h3 class='center-align'>$title</h3>
 			");
         }
@@ -78,7 +80,7 @@ class Page extends Component{
             <header>
             
             <nav class='cyan lighten-1 '>
-            <div class='nav-wrapper navbar-fixed cyan lighten-1'>
+            <div class='nav-wrapper navbar-fixed light-blue accent-4'>
                 <a href='#!'  class='brand-logo center'><img class='tamanio' src='../../web/img/logo/logo_medium_black.png' ></a>    
               <!--  <a class='waves-effect waves-light right ' href='#' ><i class='material-icons right'>power_settings_new</i>Cerrar sesion</a>-->
                
@@ -91,6 +93,7 @@ class Page extends Component{
                     <li><a href='../cuenta/logout.php'><i class='material-icons '>vpn_key</i>Cerrar Sesion</a></li>
                     <li class='divider'></li>
                     <li><a href='../cuenta/profile.php'><i class='material-icons'>settings</i>modificar perfil</a></li>
+                    <li><a href='../../public/index.php'><i class='material-icons'>settings</i>sitio publico</a></li>
                    
                 </ul>
             </div>
@@ -111,16 +114,17 @@ class Page extends Component{
                 </li>
                 <li><a href='../cuenta/profilev.php'><i class='material-icons'>account_box</i>Perfil</a></li>
                 <li><div class='divider'></div></li>
-                <li><a href='../producto'class='waves-effect waves-light btn-large cyan lighten-1'><i class='material-icons'>shopping_cart</i>Productos</a></li>
-                <li><a href='../categoria' class='waves-effect waves-light btn-large cyan lighten-1'><i class='material-icons'>list</i>Categorias</a></li>
-                <li><a href='../proveedor' class='waves-effect waves-light btn-large cyan lighten-1'><i class='material-icons'>assignment_ind</i>Proveedor</a></li>
-                <li><a href='../tipousuario' class='waves-effect waves-light btn-large cyan lighten-1'><i class='material-icons'>supervisor_account</i>Tipo Usuario</a></li>
-                <li><a href='../venta' class='waves-effect waves-light btn-large cyan lighten-1'><i class='material-icons'>add_shopping_cart</i>Ventas</a></li>
-                <li><a href='../administrador' class='waves-effect waves-light btn-large cyan lighten-1'><i class='material-icons'>supervisor_account</i>Administradores</a></li>
-                <li><a href='#!' class='waves-effect waves-light btn-large cyan lighten-1'><i class='material-icons'>assessment</i>Estadisticas</a></li>
+                <li class='light-blue lighten-2'><a href='../producto'class='waves-effect waves-light btn-flat light-blue lighten-2'><i class='material-icons'>shopping_cart</i>Productos</a></li>
+                <li class='light-blue lighten-2'><a href='../categoria' class='waves-effect waves-light btn-flat light-blue lighten-2'><i class='material-icons'>list</i>Categorias</a></li>
+                <li class='light-blue lighten-2'><a href='../proveedor' class='waves-effect waves-light btn-flat light-blue lighten-2'><i class='material-icons'>assignment_ind</i>Proveedor</a></li>
+                <li class='light-blue lighten-2'><a href='../tipousuario' class='waves-effect waves-light btn-flat light-blue lighten-2'><i class='material-icons'>supervisor_account</i>Tipo Usuario</a></li>
+                <li class='light-blue lighten-2'><a href='../venta' class='waves-effect waves-light btn-flat light-blue lighten-2'><i class='material-icons'>add_shopping_cart</i>Ventas</a></li>
+                <li class='light-blue lighten-2'><a href='../usuario' class='waves-effect waves-light btn-flat light-blue lighten-2'><i class='material-icons'>shop</i>Clientes</a></li>
+                <li class='light-blue lighten-2'><a href='../administrador' class='waves-effect waves-light btn-flat light-blue lighten-2'><i class='material-icons'>supervisor_account</i>Administradores</a></li>
+                <li class='light-blue lighten-2'><a href='../Estadistica' class='waves-effect waves-light btn-flat light-blue lighten-2'><i class='material-icons'>assessment</i>Estadisticas</a></li>
             </ul>       
             </header>
-				<main class='container'>
+				<main id='mainsito' class='container'>
 					<h3 class='center-align'>$title</h3>
 			");
 		}
@@ -168,6 +172,7 @@ class Page extends Component{
             <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
             <script type='text/javascript' src='../../web/js/jquery.dataTables.min.js'></script>
             <script type='text/javascript' src='../../web/js/tabla.js'></script>
+            
             
             </body>
             </html>

@@ -9,8 +9,8 @@ class Database{
     private function connect(){
         $server ="localhost";
         $database ="gcclassic-prueba";
-        $username ="root";
-        $password = "";
+        $username ="daysi";
+        $password = "1234";
         try{
             @self::$connection = new PDO("mysql:host=$server; dbname=$database; charset=utf8",$username,$password);
         }catch(PDOException $exception){

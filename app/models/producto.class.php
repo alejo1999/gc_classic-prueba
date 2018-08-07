@@ -149,10 +149,13 @@ class Producto extends Validator{
 
 	//Metodos para el manejo del CRUD
 	public function getCategoriaProductos(){
-		$sql = "SELECT nombre_categoria, id_producto,imagen, nombre, descripcion, precio FROM productos INNER JOIN categoria USING(fk_id_categoria) WHERE id_categoria = ? AND estado = 1 ORDER BY nombre";
-		$params = array($this->categoria);
+		$sql = "SELECT categoria.nombre_categoria, productos.id_producto,productos.imagen, productos.nombre, productos.descripcion, productos.precio FROM productos 
+		INNER JOIN categoria ON productos.fk_id_categoria = categoria.id_categoria
+		WHERE id_categoria = ? AND estado = 1 ORDER BY nombre";
+		$params = array($this->id_categoria);
 		return Database::getRows($sql, $params);
 	}
+	
 	public function getProductos(){
 		$sql = "SELECT productos.id_producto, productos.imagen, productos.nombre, categoria.nombre_categoria,proveedor.nombre_proveedor, productos.precio,productos.descuento, productos.existencia,productos.estado 
 		FROM productos 
@@ -161,6 +164,16 @@ class Producto extends Validator{
 		ORDER BY nombre";
 		$params = array(null);
 		return Database::getRows($sql, $params);
+	}
+	
+	public function getCategoriaProductos2($empieza, $por_pagina){
+		$query = "SELECT categoria.nombre_categoria, productos.id_producto,productos.imagen, productos.nombre, productos.descripcion, productos.precio FROM productos 
+		INNER JOIN categoria ON productos.fk_id_categoria = categoria.id_categoria
+		WHERE id_categoria = ? AND estado = 1 
+		ORDER BY nombre
+		LIMIT $empieza, $por_pagina";
+		$params = array($this->id_categoria);
+		return Database::getRows($query, $params);
 	}
 	public function searchProducto($value){
 		$sql = "SELECT productos.id_producto, productos.imagen, productos.nombre, categoria.nombre_categoria,proveedor.nombre_proveedor, productos.precio,productos.descuento, productos.existencia,productos.estado 

@@ -1,17 +1,21 @@
 $( document ).ready(function(){
 
 	$('.button-collapse').sideNav();
-            $('.modal').modal();
-            $('select').material_select();
-            $(".dropdown-button").dropdown();
-            $('.materialboxed').materialbox();
-   $(".button-collapse").sideNav();
-   $('.slider').slider();
+  $('.modal').modal();
+  $('select').material_select();
+  $(".dropdown-button").dropdown();
+  $('.materialboxed').materialbox();
+  $(".button-collapse").sideNav();
+  $('.slider').slider();
   $('.parallax').parallax();
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-   
-    $('ul.tabs').tabs();
+  $('.modal').modal();
+  $('ul.tabs').tabs();
+
+
+  
+  // killerSession();
+
+
 
 
 $('.datepicker').pickadate({
@@ -32,6 +36,15 @@ $('.datepicker').pickadate({
 
 
 })
+
+
+
+
+// function killerSession(){
+//                   setTimeout("window.open('/tienda/gc_classic/public/logout.php','_top');",600000);
+//                       }
+                
+   
       
 
 

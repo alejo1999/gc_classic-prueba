@@ -61,6 +61,12 @@ class Proveedor extends Validator{
         $params = array(null);
         return Database::getRows($sql,$params);
     }
+
+    public function getSuscripciones(){
+        $sql = "SELECT id_suscripcion, suscripcion, descripcion, precio ,duracion  FROM suscripcion ORDER BY id_suscripcion";
+		$params = array(null);
+		return Database::getRows($sql, $params);
+    }
     public function searchProveedores($value){
 		$sql = "SELECT * FROM proveedor WHERE nombre_proveedor LIKE ?  ORDER BY nombre_proveedor";
 		$params = array("%$value%");

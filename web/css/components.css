@@ -182,8 +182,13 @@ label.field.focused .psuedo_select ul {
   text-decoration: null;
   
 }
+.opacidad{
+  background-color:rgba(255, 255, 255, 0.349);
+}
+.abajo{
 
-
+  text-align: right;
+}
 .ec-stars-wrapper {
   display: inline-block;
   margin-left: 25% ;

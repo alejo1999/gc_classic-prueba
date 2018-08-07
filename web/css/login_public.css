@@ -1,5 +1,5 @@
 body{
-    background-image: url("../img/backgrounds/login_back_1.jpg");
+    background-image: url("../img/backgrounds/fondo2.png");
     background-size: cover;
 
     display: flex;
@@ -19,12 +19,17 @@ main{
     background-color: white;
     height: calc(auto+20px);
     
-   
-
-    
 }
-.row{
+.espacio{
     padding-top: 100px;
+    border-radius: 15px;
+}
+.bordeado{
+    border-radius: 50px;
+}
+.espacio2{
+    padding-top: 100px;
+    padding-bottom: 100px
 }
 .btn{
     margin-bottom: 20px;

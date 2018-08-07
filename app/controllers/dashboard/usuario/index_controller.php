@@ -1,19 +1,19 @@
 <?php
-require_once("../../app/models/usuario.class.php");
+require_once("../../app/models/cliente.class.php");
 try{
-	$usuario = new Usuario;
+	$usuario = new Cliente;
 	if(isset($_POST['buscar'])){
 		$_POST = $usuario->validateForm($_POST);
-		$data = $usuario->searchUsuario($_POST['busqueda']);
+		$data = $usuario->searchCliente($_POST['busqueda']);
 		if($data){
 			$rows = count($data);
 			Page::showMessage(4, "Se encontraron $rows resultados", null);
 		}else{
 			Page::showMessage(4, "No se encontraron resultados", null);
-			$data = $usuario->getUsuarios();
+			$data = $usuario->getClientes()();
 		}
 	}else{
-		$data = $usuario->getUsuarios();
+		$data = $usuario->getClientes();
 	}
 	if($data){
 		require_once("../../app/views/dashboard/usuario/index_view.php");

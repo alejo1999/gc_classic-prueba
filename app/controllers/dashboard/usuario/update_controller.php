@@ -1,28 +1,24 @@
 <?php
-require_once("../../app/models/usuario.class.php");
+require_once("../../app/models/cliente.class.php");
 try{
     if(isset($_GET['id'])){
-        $usuario = new Usuario;
-        if($usuario->setId($_GET['id'])){
-            if($usuario->readUsuario()){
-                if(isset($_POST['actualizar'])){
-                    $_POST = $usuario->validateForm($_POST);
-                    if($usuario->setNombres($_POST['nombres'])){
-                        if($usuario->setApellidos($_POST['apellidos'])){
-                            if($usuario->setCorreo($_POST['correo'])){
-                                if($usuario->setTelefono($_POST['telefono'])){
-                                    if($usuario->setTipousuario($_POST['tipousuario'])){
-                                        if($usuario->setEstado(isset($_POST['estado'])?1:0)){
-                                            if($usuario->updateUsuario()){
-                                                Page::showMessage(1, "Usuario modificado", "index.php");
-                                            }else{
-                                                throw new Exception(Database::getException());
-                                            }
+        $admin = new Cliente;
+        if($admin->setId($_GET['id'])){
+            if($admin->readCliente()){
+                if(isset($_POST['actualizar'])){ 
+                    $_POST = $admin->validateForm($_POST);
+                    if($admin->setNombres($_POST['nombres'])){
+                        if($admin->setApellidos($_POST['apellidos'])){
+                            if($admin->setCorreo($_POST['correo'])){
+                                if($admin->setTelefono($_POST['telefono'])){
+                                    if($admin->setEstado(isset($_POST['estado'])?1:0)){
+                                        if($admin->updateCliente()){
+                                            Page::showMessage(1, "Usuario modificado", "index.php");
                                         }else{
-                                            throw new Exception("Estado incorrecto");
+                                            throw new Exception(Database::getException());
                                         }
                                     }else{
-                                        throw new Exception("tipo de usuario incorrecto");
+                                        throw new Exception("Estado incorrecto");
                                     }
                                 }else{
                                     throw new Exception("Telefono incorrecto");
@@ -36,6 +32,14 @@ try{
                     }else{
                         throw new Exception("Nombres incorrectos");
                     }
+                }
+
+                if(isset($_POST['desbloquear'])){
+                    $_POST = $admin->validateForm($_POST);
+
+                    $admin->changefecha_bloqueo();
+                    Page::showMessage(1, "Cliente desbloqueado ", "index.php");
+
                 }
             }else{
                 Page::showMessage(2, "Usuario inexistente", "index.php");

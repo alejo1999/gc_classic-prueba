@@ -26,7 +26,7 @@
     </div>
 </div> 
 
-<table class=' highlight responsive-table centered ' id='mi_tabla'>
+<table class=' highlight responsive-table centered ' id='mi_tabla' >
     <thead>
         <tr>
             <th>Imagen</th>
@@ -37,7 +37,8 @@
             <th>Descuento</th>
             <th>Existencia</th>
             <th>Estado</th>
-            <th>Accion</th> 
+            <th>Accion</th>
+            <th></th> 
         </tr>
     </thead>
     <tbody>
@@ -55,8 +56,12 @@
             <td><i class='material-icons'>".($row['estado']?"visibility":"visibility_off")."</i></td>
             <td>
                 <a href='update.php?id=$row[id_producto]' class='waves-effect waves-light'><i class='material-icons black-text'>create</i></a>
+                
                 <a href='delete.php?id=$row[id_producto]' id='space' class='waves-effect waves-light'href='#'><i class='material-icons red-text'>delete</i></a>
-			</td>
+            </td>
+            <td>
+            <a href='valoracion.php?id=$row[id_producto]' class='waves-effect waves-light'><i class='material-icons black-text'>message</i></a>
+            </td>
 		</tr>
 		");
 	}

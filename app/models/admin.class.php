@@ -8,7 +8,7 @@ class Administrador extends Validator{
 	private $clave = null;
 	private $telefono = null;
 	private $id_tipousuario = null;
-    
+
 
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
@@ -72,7 +72,7 @@ class Administrador extends Validator{
 	}
 
 	public function setTelefono($value){
-		if($this->validateNumeric($value, 1, 10)){
+		if($this->validateNumeric($value, 8, 10)){
 			$this->telefono = $value;
 			return true;
 		}else{

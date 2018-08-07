@@ -19,7 +19,7 @@ try{
 	if($data){
 		require_once("../../app/views/dashboard/venta/index_view.php");
 	}else{
-		Page::showMessage(4, "No hay ventas disponibles", "create.php");
+		Page::showMessage(4, "No hay ventas disponibles hola", "create.php");
 	}
 }catch(Exception $error){
 	Page::showMessage(2, $error->getMessage(), "../cuenta/");

@@ -1,0 +1,9 @@
+body{
+    background-image: url("../img/parallax/1.jpg");
+    background-size: cover;
+
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    
+}
