@@ -1,0 +1,16 @@
+body{
+    background-image: url("../img/backgrounds/fondo3.jpg");
+    background-size: cover;
+
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    
+}
+
+.bordeado{
+    border-radius: 50px;
+}
+.bordeado2{
+    border-radius: 30px;
+}

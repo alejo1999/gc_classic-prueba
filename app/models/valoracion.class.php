@@ -59,7 +59,7 @@ class Valoracion extends Validator{
     }
     
     public function setComentario($value){
-		if($this->validateAlphanumeric($value, 1, 200)){
+		if($value != ""){
 			$this->comentario = $value;
 			return true;
 		}else{

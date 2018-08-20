@@ -25,7 +25,7 @@ try{
                 if($cliente->setCorreo($_POST['correo'])){
                     if($cliente->setTelefono($_POST['telefono'])){
                         if($_POST['clave1'] == $_POST['clave2']){
-                            if($cliente->setClave($_POST['clave1'])){
+                            if($cliente->setClave2($_POST['clave1'])){
                                 if($cliente->setGenero(isset($_POST['estado'])?1:0)){
                                     if($cliente->createCliente()){
                                         Page::showMessage(1, "Cliente  registrado", "login.php");
@@ -36,7 +36,7 @@ try{
                                     throw new Exception("Genero incorrecto");
                                 }
                             }else{
-                                throw new Exception("Clave menor a 8 caracteres");
+                                throw new Exception("La clave debe de llevar Una MAYUS. numeros y caracteres especiales");
                             }
                         }else{
                             throw new Exception("Claves diferentes");

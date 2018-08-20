@@ -12,10 +12,10 @@ try{
 							if($object->setClave($_POST['clave'])){
 								if($object->checkPassword()){
 									$_SESSION['id_admin'] = $object->getId();
-									$_SESSION['correo'] = $object->getCorreo();
-									$_SESSION['nombre'] = $object->getNombres();
+									$_SESSION['correo_admin'] = $object->getCorreo();
+									$_SESSION['nombre_admin'] = $object->getNombres();
 									$_SESSION['id_tipousuario'] = $object->getTipousuario();
-									Page::showMessage(1, "Autenticación correcta", "index.php");
+									Page::showMessage(1, "Autenticación correcta Bienvenido $_SESSION[nombre_admin]", "index.php");
 								}else{
 									throw new Exception("Clave inexistente");
 								}

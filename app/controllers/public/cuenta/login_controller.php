@@ -8,19 +8,19 @@ try{
 		
 	}
 
-	
-
-	 
-
 	$cliente = new Cliente;
 	if($cliente->getClientes()){
 		if(isset($_POST['iniciar'])){
 				
 			if($_SESSION['intentos'] < 3){
+				
 				$_POST = $cliente->validateForm($_POST);
 				if($cliente->setCorreo($_POST['correo'])){
 					if($cliente->checkCorreo()){
-						
+
+						$loginid = $cliente->getLogin_id();
+
+					if($loginid == 0){
 						if($cliente->checkEstado()){
 							$estado = $cliente->getEstado();
 							if($estado == 0){
@@ -36,16 +36,18 @@ try{
 														if($fechapass>=90){
 		
 															$_SESSION['id_cliente'] = $cliente->getId();
-															$_SESSION['correo'] = $cliente->getCorreo();
+															$_SESSION['correo_cliente'] = $cliente->getCorreo();
 															$_SESSION['nombre_cliente'] = $cliente->getNombres();
 															
 															Page::showMessage(1, "Autenticación correcta La contraseña es antigua, necesita un cambio", "password.php");
 														}else if($fechapass<90){
 		
 															$_SESSION['id_cliente'] = $cliente->getId();
-															$_SESSION['correo'] = $cliente->getCorreo();
+															$_SESSION['correo_cliente'] = $cliente->getCorreo();
 															$_SESSION['nombre_cliente'] = $cliente->getNombres();
 															
+															$cliente->crearlogin();
+
 															Page::showMessage(1, "Autenticación correcta ", "index.php");
 														}
 													}else{
@@ -53,6 +55,7 @@ try{
 													}
 												}else{
 													$_SESSION['intentos'] += 1;
+													
 													throw new Exception("Clave inexistente intento $_SESSION[intentos] ");
 													
 												}
@@ -74,6 +77,13 @@ try{
 						}else{
 							throw new Exception("Estado incorrecto");
 						}
+					}else{
+						Page::showMessage(3, "Sesion ya iniciada en otro dispositivo", "index.php");
+					}
+						
+						
+
+
 					}else{
 						throw new Exception("Correo inexistente ");
 					}

@@ -12,6 +12,9 @@ class Cliente extends Validator{
 	private $fecha_contrasena = null;
 	private $fecha_bloqueo = null;
 
+	public $login_id = null;
+
+
     
 
 	//Métodos para sobrecarga de propiedades
@@ -97,6 +100,15 @@ class Cliente extends Validator{
 			return false;
 		}
 	}
+	public function setClave2($value){
+		if($this->validatePasswordcaracter($value)){
+			$this->clave = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	public function getClave(){
 		return $this->clave;
 	}
@@ -136,10 +148,52 @@ class Cliente extends Validator{
 		return $this->estado;
 	}
 
+	Public function setLogin_id($value){
+		if($this->validateId($value)){
+			$this->login_id = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function getLogin_id(){
+		return $this->login_id;
+	}
+
 	
 	//manejar la sesion en el sistema
 	public function checkCorreo(){
-		$sql = "SELECT id_cliente FROM cliente WHERE correo = ? ";
+		$sql = "SELECT id_cliente,login_id FROM cliente WHERE correo = ? ";
+		$params = array($this->correo);
+		$data = Database::getRow($sql, $params);
+		if($data){
+			$this->id = $data['id_cliente'];
+			$this->login_id = $data['login_id'];
+
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function crearlogin(){
+		$sql = "UPDATE cliente SET login_id = 1 WHERE id_cliente=?";
+		$params = array($this->id);
+		return Database::executeRow($sql, $params);
+		
+	}
+
+	public function quitarlogin(){
+		$sql = "UPDATE cliente SET login_id = 0 WHERE id_cliente = ?";
+		$params = array($this->id);
+		return Database::executeRow($sql, $params);
+		
+	}
+
+
+	public function checklogin(){
+		$sql = "SELECT login_id FROM cliente WHERE correo = ? ";
 		$params = array($this->correo);
 		$data = Database::getRow($sql, $params);
 		if($data){

@@ -12,33 +12,34 @@ class Page extends Component{
 
         setlocale(LC_ALL,"es_ES");
 		ini_set("date.timezone","America/El_Salvador");
-		print('
+		print("
         <!DOCTYPE html>
-        <html lang="es">
+        <html lang='es'>
           <head>
             <!--Deja que el navegador sepa que el sitio web está optimizado para dispositivos móviles-->
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <meta charset="UTF-8">
-            <link type="text/css" rel="stylesheet"href="../web/css/material_icons.css" rel="stylesheet">
-            <link type="text/css" rel="stylesheet" href="../web/css/materialize.min.css"  />
-            <script type="text/javascript" src="../web/js/sweetalert.min.js"></script>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+            <meta charset='UTF-8'>
+            <title>GC-Classic - $title</title>
+            <link type='text/css' rel='stylesheet'href='../web/css/material_icons.css' rel='stylesheet'>
+            <link type='text/css' rel='stylesheet' href='../web/css/materialize.min.css'  />
+            <script type='text/javascript' src='../web/js/sweetalert.min.js'></script>
     
             
-            <link type="text/css" rel="stylesheet" href="../web/css/jquery.dataTables.min.css">
-            <link rel="stylesheet" type="text/css" href="../web/css/components.css">
-            <link rel="stylesheet" href="../web/css/style.css">
+            <link type='text/css' rel='stylesheet' href='../web/css/jquery.dataTables.min.css'>
+            <link rel='stylesheet' type='text/css' href='../web/css/components.css'>
+            <link rel='stylesheet' href='../web/css/style.css'>
             
-            <title>GC-Classic - $title</title>
+            
           </head>
       
           <body>
-		');
+		");
 		if(isset($_SESSION['id_cliente'])){
 
             if(isset($_SESSION['tiempo']) ) {
 
                 //Tiempo en segundos para dar vida a la sesión.
-                $inactivo = 300;//5min en este caso.
+                $inactivo = 480;//5min en este caso.
         
                 //Calculamos tiempo de vida inactivo.
                 $vida_session = time() - $_SESSION['tiempo'];
