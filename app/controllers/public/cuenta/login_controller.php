@@ -33,6 +33,7 @@ try{
 												if($cliente->checkPassword()){
 													if($cliente->checkfecha_contrasena()){
 														$fechapass = $cliente->getFecha_contrasena();
+														
 														if($fechapass>=90){
 		
 															$_SESSION['id_cliente'] = $cliente->getId();
@@ -55,7 +56,7 @@ try{
 													}
 												}else{
 													$_SESSION['intentos'] += 1;
-													
+
 													throw new Exception("Clave inexistente intento $_SESSION[intentos] ");
 													
 												}

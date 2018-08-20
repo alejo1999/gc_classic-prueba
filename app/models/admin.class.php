@@ -8,6 +8,8 @@ class Administrador extends Validator{
 	private $clave = null;
 	private $telefono = null;
 	private $id_tipousuario = null;
+	private $fecha_contrasena = null;
+	private $fecha_bloqueo = null;
 
 
 	//Métodos para sobrecarga de propiedades
@@ -22,6 +24,32 @@ class Administrador extends Validator{
 	public function getId(){
 		return $this->id;
 	}
+
+	public function setFecha_contrasena($value){
+        if($this->validateDate($value)){
+            $this->fecha_contrasena = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getFecha_contrasena(){
+        return $this->fecha_contrasena;
+	}
+	
+	public function setFecha_bloqueo($value){
+        if($this->validateDate($value)){
+            $this->fecha_bloqueo = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getFecha_bloqueo(){
+        return $this->fecha_bloqueo;
+    }
 	
 	public function setNombres($value){
 		if($this->validateAlphabetic($value, 1, 100)){
@@ -98,7 +126,7 @@ class Administrador extends Validator{
     
 	//manejar la sesion en el sistema
 	public function checkCorreo(){
-		$sql = "SELECT id_admin FROM administrador WHERE correo = ?";
+		$sql = "SELECT id_admin,login_id FROM administrador WHERE correo = ?";
 		$params = array($this->correo);
 		$data = Database::getRow($sql, $params);
 		if($data){
@@ -201,6 +229,26 @@ class Administrador extends Validator{
 		$sql = "DELETE FROM administrador WHERE id_admin = ?";
 		$params = array($this->id);
 		return Database::executeRow($sql, $params);
+	}
+
+
+	public function changefecha_blo(){
+		$sql = "UPDATE administrador SET administrador.fecha_bloqueo = (SELECT DATE_ADD(CURDATE(), INTERVAL 1 DAY)) WHERE administrador.id_admin = ?";
+		$params = array($this->id);
+		return Database::executeRow($sql, $params);
+	}
+
+	public function checkfecha_contrasena(){
+		$sql="SELECT DATEDIFF( CURDATE(),(SELECT administrador.fecha_contrasena)) AS fecha_dif FROM administrador WHERE administrador.id_admin = ?";
+		$params = array($this->id);
+		$data2=Database::getRow($sql,$params);
+
+		if($data2){
+			$this->fecha_contrasena = $data2['fecha_dif'];
+			return true;
+		}else{
+			return false;
+		}
 	}
 }
 ?>
