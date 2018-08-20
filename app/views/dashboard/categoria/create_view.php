@@ -1,6 +1,6 @@
 <h4> Categoria Nueva</h4>
         <div class="row">
-            <form method='post' enctype='multipart/form-data' class='col s12 m4 offset-m4 l6 offset-l3'>
+            <form autocomplete='off' method='post' enctype='multipart/form-data' class='col s12 m4 offset-m4 l6 offset-l3'>
                 <div class="row">
                     <div class="input-field col s12  ">
                         <input id="nombre" type="text" name='nombre' class="validate" value='<?php print($categoria->getNombre()) ?>' required/>

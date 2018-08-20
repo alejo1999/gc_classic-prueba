@@ -4,7 +4,7 @@
     
 
     <div class="row espacio ">
-        <form class="col s12 " method='post'>
+        <form autocomplete='off' class="col s12 " method='post'>
             <div class="row opacidad white-text center bordeado">
             <h3>Crear Perfil</h3>
                 <div class="input-field col s12 m6 l6">

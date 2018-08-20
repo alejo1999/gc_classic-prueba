@@ -1,4 +1,4 @@
-<form method='post'>
+<form autocomplete='off' method='post'>
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>person</i>

@@ -4,7 +4,7 @@
             <i class="material-icons large white-text" >account_circle</i>
             <p class="white-text">Inicia sesión con tu cuenta de Usuario</p>   
         </div>
-        <form method='post'>
+        <form autocomplete='off' method='post'>
             <div class="input-field col s12 m12 l12">
             <i class="material-icons prefix">account_box</i>
                 <input id='correo' type="text" name='correo' class="validate" value='<?php print($object->getCorreo()) ?>' required>

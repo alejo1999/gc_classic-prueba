@@ -1,4 +1,4 @@
-<form method='post' enctype='multipart/form-data'>
+<form autocomplete='off' method='post' enctype='multipart/form-data'>
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>note_add</i>

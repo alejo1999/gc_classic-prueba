@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="../web/css/login_public.css">
 <div class = "row espacio ">
-    <form method='post'autocomplete="off">
+    <form method='post' autocomplete="off">
         <div class=" col s12 m4 offset-m4 white-text opacidad center bordeado"> 
         <h3>Iniciar Sesión</h3> 
         <div class="input-field">
