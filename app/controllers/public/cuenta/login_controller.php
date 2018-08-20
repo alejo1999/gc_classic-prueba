@@ -33,7 +33,7 @@ try{
 												if($cliente->checkPassword()){
 													if($cliente->checkfecha_contrasena()){
 														$fechapass = $cliente->getFecha_contrasena();
-														
+
 														if($fechapass>=90){
 		
 															$_SESSION['id_cliente'] = $cliente->getId();
@@ -49,7 +49,7 @@ try{
 															
 															$cliente->crearlogin();
 
-															Page::showMessage(1, "Autenticación correcta ", "index.php");
+															Page::showMessage(1, "Autenticación correcta $loginid", "index.php");
 														}
 													}else{
 														throw new Exception("Error en la fecha");

@@ -17,52 +17,81 @@ try{
 			$_POST = $object->validateForm($_POST);
 			if($object->setCorreo($_POST['correo'])){
 				if($object->checkCorreo()){
-					if($object->checkNombre()){
-						if($object->checkTipo()){
-							if($object->setClave($_POST['clave'])){
-								if($object->checkPassword()){
 
-									if($object->checkfecha_contrasena()){
-										$fechapass = $object->getFecha_contrasena();
 
-										if($fechapass>=90){
-		
-											$_SESSION['id_admin'] = $object->getId();
-											$_SESSION['correo_admin'] = $object->getCorreo();
-											$_SESSION['nombre_admin'] = $object->getNombres();
-											$_SESSION['id_tipousuario'] = $object->getTipousuario();
-											
-											Page::showMessage(1, "Autenticación correcta Bienvenido $_SESSION[nombre_admin] La contraseña es antigua, necesita un cambio", "password.php");
-										}else if($fechapass<90){
+					$loginid = $object->getLogin_id();
 
-											$_SESSION['id_admin'] = $object->getId();
-											$_SESSION['correo_admin'] = $object->getCorreo();
-											$_SESSION['nombre_admin'] = $object->getNombres();
-											$_SESSION['id_tipousuario'] = $object->getTipousuario();
-											
-											$cliente->crearlogin();
+					if($loginid == 0){
 
-											Page::showMessage(1, "Autenticación correcta Bienvenido $_SESSION[nombre_admin]", "index.php");
+						if($object->checkfecha_bloqueo()){
+
+							$fechablo = $object->checkfecha_bloqueo();
+
+							if($fechablo >=1){
+								if($object->checkNombre()){
+									if($object->checkTipo()){
+										if($object->setClave($_POST['clave'])){
+											if($object->checkPassword()){
+			
+												if($object->checkfecha_contrasena()){
+													$fechapass = $object->getFecha_contrasena();
+			
+													if($fechapass>=90){
+					
+														$_SESSION['id_admin'] = $object->getId();
+														$_SESSION['correo_admin'] = $object->getCorreo();
+														$_SESSION['nombre_admin'] = $object->getNombres();
+														$_SESSION['id_tipousuario'] = $object->getTipousuario();
+														
+														$object->crearlogin();
+														
+														Page::showMessage(1, "Autenticación correcta Bienvenido $_SESSION[nombre_admin] La contraseña es antigua, necesita un cambio", "password.php");
+													}else if($fechapass<90){
+			
+														$_SESSION['id_admin'] = $object->getId();
+														$_SESSION['correo_admin'] = $object->getCorreo();
+														$_SESSION['nombre_admin'] = $object->getNombres();
+														$_SESSION['id_tipousuario'] = $object->getTipousuario();
+														
+														$object->crearlogin();
+			
+														Page::showMessage(1, "Autenticación correcta Bienvenido $_SESSION[nombre_admin] $loginid", "index.php");
+													}
+												}else{
+													throw new Exception("Error en la fecha");
+												}
+			
+												
+											}else{
+			
+												$_SESSION['intentos_admin'] += 1;
+												throw new Exception("Clave inexistente");
+											}
+										}else{
+											throw new Exception("Clave menor a 8 caracteres");
 										}
 									}else{
-										throw new Exception("Error en la fecha");
+			
 									}
-
-									
 								}else{
-
-									$_SESSION['intentos_admin'] += 1;
-									throw new Exception("Clave inexistente");
+									throw new Exception("Nombre inexistente");
 								}
-							}else{
-								throw new Exception("Clave menor a 8 caracteres");
 							}
-						}else{
-
+							else if ($fechablo <1){
+								throw new Exception("Tu cuenta ha sido bloqueada Temporalmente intenta en unas horas ");
+							}
+							
 						}
-					}else{
-						throw new Exception("Nombre inexistente");
+							else{
+
+							}
+						
 					}
+					else{
+						Page::showMessage(3, "Sesion ya iniciada en otro dispositivo", "index.php");
+					}
+
+					
 				}else{
 					throw new Exception("Correo inexistente");
 				}

@@ -11,6 +11,9 @@ class Administrador extends Validator{
 	private $fecha_contrasena = null;
 	private $fecha_bloqueo = null;
 
+	
+	public $login_id = null;
+
 
 	//Métodos para sobrecarga de propiedades
 	public function setId($value){
@@ -122,6 +125,20 @@ class Administrador extends Validator{
 	public function getTipousuario(){
 		return $this->id_tipousuario;
 	}
+
+
+	Public function setLogin_id($value){
+		if($this->validateId($value)){
+			$this->login_id = $value;
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function getLogin_id(){
+		return $this->login_id;
+	}
     
     
 	//manejar la sesion en el sistema
@@ -131,6 +148,7 @@ class Administrador extends Validator{
 		$data = Database::getRow($sql, $params);
 		if($data){
 			$this->id = $data['id_admin'];
+			$this->login_id = $data['login_id'];
 			return true;
 		}else{
 			return false;
@@ -171,7 +189,7 @@ class Administrador extends Validator{
 	}
 	public function changePassword(){
 		$hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "UPDATE administrador SET contraseña = ? WHERE id_admin = ?";
+		$sql = "UPDATE administrador SET contraseña = ? , fecha_contrasena = CURDATE() WHERE id_admin = ?";
 		$params = array($hash, $this->id);
 		return Database::executeRow($sql, $params);
 	}
@@ -245,6 +263,32 @@ class Administrador extends Validator{
 
 		if($data2){
 			$this->fecha_contrasena = $data2['fecha_dif'];
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function crearlogin(){
+		$sql = "UPDATE administrador SET login_id = 1 WHERE id_admin= ?";
+		$params = array($this->id);
+		return Database::executeRow($sql, $params);
+	}
+
+	public function quitarlogin(){
+		$sql = "UPDATE administrador SET login_id = 0 WHERE id_admin = ?";
+		$params = array($this->id);
+		return Database::executeRow($sql, $params);
+		
+	}
+
+	public function checkfecha_bloqueo(){
+		$sql="SELECT DATEDIFF( CURDATE(),(SELECT administrador.fecha_bloqueo)) AS fecha_blo FROM administrador WHERE administrador.id_admin = ?";
+		$params = array($this->id);
+		$data2=Database::getRow($sql,$params);
+
+		if($data2){
+			$this->fecha_bloqueo = $data2['fecha_blo'];
 			return true;
 		}else{
 			return false;

@@ -201,8 +201,8 @@ class Page extends Component{
 				<main class=' container'>
 			");
 			$filename = basename($_SERVER['PHP_SELF']);
-			if($filename != "login.php" && $filename != "register.php"){
-				self::showMessage(3, "¡Debe iniciar sesión!", "../cuenta/login.php");
+			if($filename != "login.php" && $filename != "register.php" && $filename != "recovery_password.php"){
+				self::showMessage(3, "¡Debe iniciar sesión  sss!", "../cuenta/login.php");
 				self::templateFooterlogin();
 				exit;
             }

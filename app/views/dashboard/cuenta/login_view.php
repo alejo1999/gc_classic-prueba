@@ -22,10 +22,11 @@
                 
             </div>
             <div class=" input-field col s12 m12 l6 ">
-                 <button type='submit' name='iniciar' class='btn bordeado waves-effect waves-light white black-text'>Recuperar Contraseña</button>
+            <a class='btn bordeado waves-effect waves-light white black-text' href="recovery_password.php">Recuperar contraseña</a>
+                
             </div>
             <!--boton de la ventana modal-->
-            <a class='modal-trigger' href='#modal1'>Recuperar contraseña</a>
+            
         </form>
     </div>
 </div>
