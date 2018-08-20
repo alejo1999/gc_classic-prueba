@@ -3,7 +3,7 @@
             <div class="col s12 m4 l3">
                 <h4>Categorias</h4>
             </div>
-            <form method='post'>
+            <form autocomplete='off' method='post'>
                 <div class="col s10 m5 l5 ">
                         
                             <div class="input-field">

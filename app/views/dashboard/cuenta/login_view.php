@@ -5,7 +5,7 @@
             <i class="material-icons large white-text" >account_circle</i>
             <p class="white-text">Inicia sesión con tu cuenta de Administrador</p>   
         </div>
-        <form method='post' autocomplete="off">
+        <form autocomplete='off' method='post' autocomplete="off">
             <div class="input-field col s12 m12 l12 white-text">
             <!-- <i class="material-icons ">account_box</i> -->
                 <input id='correo' type="text" name='correo' class="validate" value='<?php print($object->getCorreo()) ?>' required>
